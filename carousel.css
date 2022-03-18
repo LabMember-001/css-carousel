@@ -1,0 +1,287 @@
+/*	
+	Simple CSS Carousel. 
+	https://okabe.moe/projects/css-carousel/
+	You are free to use this yourself if you wish.
+*/
+
+/* default values */
+:root {
+	--carousel-width: max-content;	/* fill containers*/
+	--carousel-height: max-content;
+	--carousel-text-color: #EEE;
+	--carousel-text-color-hover: #AAA;
+	--carousel-bg-color: #222;
+	--carousel-box-shadow: 0px 0px 10px 0px #000;
+	--carousel-border-width: 2px;
+	--carousel-border-style: solid;
+	--carousel-border-color: #444;
+	--carousel-border-radius: 6px;
+	--carousel-amount: 0;
+	--label-count: 0;
+	--carousel-image-border-radius-offset: 2px;
+	--carousel-background: url('img/beach-painting.jpg'); /* demo picture */
+	--carousel-background-size: cover;
+	--carousel-animation: opacity ease-in-out 1s 0s;
+	--carousel-z-index-image-default: 0;
+	--carousel-z-index-image-unselected: -1;
+	--carousel-z-index-image-selected: 1;
+	--carousel-z-index-list: 1;
+	--carousel-z-index-selector: 2;
+	--carousel-selector-background-selected: linear-gradient(180deg, #515050 0%, #756E6E 100%);
+	--carousel-selector-background-unselected: linear-gradient(180deg, #FFF 0%, #AAA 100%);
+	--carousel-selector-background-hover: linear-gradient(180deg, #AAA 0%, #888 100%);
+	--carousel-selector-shadow-selected: 0px 0px 4px 0px #000;
+	--carousel-selector-shadow-unselected: 0px 0px 4px 0px #000;
+	--carousel-selector-size: 14px;
+	--carousel-selector-margin: 14px;
+	--carousel-selected-container-border-radius-top: calc( var(--carousel-border-radius) - var(--carousel-image-border-radius-offset) ) calc( var(--carousel-border-radius) - var(--carousel-image-border-radius-offset) ) 0px 0px;
+	--carousel-selected-container-border-radius-bottom: 0px 0px calc( var(--carousel-border-radius) - var(--carousel-image-border-radius-offset) ) calc( var(--carousel-border-radius) - var(--carousel-image-border-radius-offset) );
+	--carousel-go-side-size: 50px;
+	--carousel-go-side-margin: 5px;
+	--carousel-go-side-color: #EEE;
+	--carousel-go-side-color-hover: #AAA;
+	--carousel-text-shadow: 0 0 2px #FFF, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #4F4F4F, 0 0 2px #535353, 0 0 2px #404040
+}
+
+div.carousel-container {
+	display: table-cell;
+	position: relative;
+	width: var(--carousel-width);
+	height: var(--carousel-height);
+	padding: 10px;
+}
+
+div.demo-text-container {
+	display: table-cell;
+	position: relative;
+	margin: 20px;
+	width: 300px;
+}
+
+div.carousel {
+	width: var(--carousel-width); /* for override use inline style on element */
+	height: var(--carousel-height);
+	background: var(--carousel-bg-color);
+	border-width: var(--carousel-border-width);
+	border-style: var(--carousel-border-style);
+	border-color: var(--carousel-border-color);
+	border-radius: var(--carousel-border-radius);
+	border: none;
+	box-shadow: var(--carousel-box-shadow);
+}
+
+div.carousel ul, div.carousel li {
+	list-style: none;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: var(--carousel-width);
+	height: var(--carousel-height);
+	z-index: var(--carousel-z-index-list);
+	border-radius: var(--carousel-border-radius);
+}
+
+label.carousel-selector {
+	position: absolute;
+	z-index: var(--carousel-z-index-selector);
+	top: unset;
+	bottom: 0;
+	display: block;
+	width: calc(var(--carousel-selector-size) * 2);
+	height: calc(var(--carousel-selector-size) * 2);
+	right: calc(50% - ( ( ( ( (var(--carousel-selector-size) + var(--carousel-selector-margin) ) * var(--label-count) ) ) / 1.0 ) ) - ( (var(--carousel-amount) * ((var(--carousel-selector-size) - (var(--carousel-selector-margin)*2)) ))) );
+	/*border: 1px solid #333;*/
+	color: transparent;
+	cursor: pointer;
+}
+
+label.carousel-selector.top {
+	top: 0;
+	bottom: unset;
+}
+
+span.carousel-selector-bubble {
+	position: absolute;
+	z-index: var(--carousel-z-index-selector);
+	display: block;
+	width: var(--carousel-selector-size);
+	height: var(--carousel-selector-size);
+	background: var(--carousel-selector-background-unselected);
+	border-radius: 20px;
+	box-shadow: var(--carousel-selector-shadow-unselected);
+	text-align: center;
+	-webkit-user-select: none;
+			user-select: none;
+	border: 1px solid #333;
+	color: transparent;
+	top: calc(50% - (var(--carousel-selector-size) / 2 ) );
+	left: calc(50% - (var(--carousel-selector-size) / 2 ) );
+	opacity: 0.9;
+}
+
+label.carousel-selector:hover > span.carousel-selector-bubble {
+  background: var(--carousel-selector-background-hover);
+}
+
+div.carousel input:checked + span.selected label.carousel-selector span.carousel-selector-bubble {
+   background: var(--carousel-selector-background-selected);
+   box-shadow: var(--carousel-selector-shadow-selected);
+}
+
+div.carousel input[type="radio"] {
+	display: none;
+}
+
+span.carousel-image {
+	display: block;
+	z-index: var(--carousel-z-index-image-default);
+	width: var(--carousel-width);
+	height: var(--carousel-height);
+	background: var(--carousel-background);
+	border-radius: calc( var(--carousel-border-radius) - var(--carousel-image-border-radius-offset) );
+	background-size: var(--carousel-background-size);
+}
+
+div.carousel ul span.carousel-image {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	z-index: var(--carousel-z-index-image-unselected);
+	/*transition: var(--carousel-animation);*/
+}
+
+div.carousel input[type="radio"]:checked + span.selected span.carousel-image {
+	opacity: 1;
+	/*transition: var(--carousel-animation);*/
+}
+
+label.go-side {
+	position: absolute;
+	width: calc(var(--carousel-go-side-size) + var(--carousel-go-side-margin));
+	height: 100%;
+	top: 0;
+	-webkit-user-select: none;
+			user-select: none;
+	z-index: var(--carousel-z-index-list);
+	border: none;
+	box-shadow: none;
+	display: none;
+	cursor: pointer;
+}
+
+label.go-side.left {
+	left: 0;
+}
+
+label.go-side.right {
+	right: 0;
+}
+
+label.go-side span.symbol::after {
+	position: absolute;
+	width: calc(var(--carousel-go-side-size) - var(--carousel-go-side-margin));
+	top: calc(50% - (var(--carousel-go-side-size) / 2));
+	/*background: red;*/
+	width: var(--carousel-go-side-size);
+	font-size: calc( (var(--carousel-go-side-size) / 2));
+	text-shadow: var(--carousel-text-shadow);
+	color: var(--carousel-go-side-color);
+	z-index: var(--carousel-z-index-selector);
+	line-height: var(--carousel-go-side-size);
+	letter-spacing: 2px;
+	font-family: Verdana;
+}
+
+label.go-side.left span.symbol.left::after {
+	text-align: left;
+	left: 5px;
+	content: '❮';
+}
+
+label.go-side.right span.symbol.right::after {
+	text-align: right;
+	right: 5px;
+	content: '❯';
+}
+
+label.go-side:hover > span.symbol::after {
+	color: var(--carousel-go-side-color-hover);
+}
+
+div.carousel input:checked + span.selected label.go-side {
+   display: block;
+}
+
+div.carousel span.selected-container {
+	display: none;
+	overflow: hidden;
+	width: 100%;
+	margin: auto;
+	padding-top: 0;
+	padding-bottom: 0;
+	background: #00000045;
+	position: absolute;
+	border-radius: var(--carousel-selected-container-border-radius-top);
+	/* padding-top: calc( var(--carousel-selector-size) * 1.5 ); Keeping this off for better bubble location customizability */
+	/*opacity: 0;
+	transition: var(--carousel-animation);*/
+}
+
+div.carousel span.selected-container.bottom {
+	border-radius: var(--carousel-selected-container-border-radius-bottom);
+	bottom: 0;
+	/* padding-top: 0; */
+	/* padding-bottom: calc( var(--carousel-selector-size) * 1.5 ); Keeping this off for better bubble location customizability */
+}
+
+div.carousel span.selected-container span.selector-spacer {
+	display: block;
+	width: calc( var(--carousel-selector-size) * 1.5 );
+	height: calc( var(--carousel-selector-size) * 1.5 );
+}
+
+div.carousel input:checked + span.selected span.selected-container {
+	display: block;
+	/*opacity: 1;
+	transition: var(--carousel-animation);*/
+}
+
+div.carousel span.selected-content {
+	width: calc(100% - (var(--carousel-go-side-size) * 2) );
+	display: block;
+	margin-left: calc(var(--carousel-go-side-size) / 4 );
+	/*background: green;*/
+	padding: 5px;
+	-webkit-user-select: none;
+			user-select: none;
+	color: var(--carousel-text-color);
+}
+
+div.carousel span.selected-content span.title {
+	font-size: 32px;
+}
+
+div.carousel span.selected-content span.description {
+	display: block;
+}
+
+div.carousel span.selected-content a {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	color: inherit;
+	z-index: calc(var(--carousel-z-index-selector) + 1);
+	position: relative;
+}
+
+div.carousel span.selected-content a:hover {
+	color: var(--carousel-text-color-hover);
+}
+
+div.carousel span.selected-content span.title, div.carousel span.selected-content span.description {
+	margin: calc( (var(--carousel-go-side-size) / 10) );
+	text-shadow: var(--carousel-text-shadow);
+}
+
+div.carousel-demo-container {
+	display: flex;
+}

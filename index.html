@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>「 CSS Carousel 」</title>
+	<link rel="stylesheet" href="carousel.css">
+</head>
+<body>
+
+<div class="main">
+	<h1>「 CSS Carousel 」</h1> 
+
+<div class="carousel-demo-container">
+		
+		<div class="carousel-container" style="--carousel-width: 400px;--carousel-height: 200px;--carousel-amount:6;">
+			<div class="carousel">
+
+				<ul>
+					<li>
+						<input name="carousel-0" id="carousel-0-1" type="radio" checked/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-0-1" style="--label-count:1"><span class="carousel-selector-bubble">1</span></label>
+							<label class="go-side left" for="carousel-0-6"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-0-2"><span class="symbol right"></span></label>
+							<span class="selected-container"><span class="selected-content"><span class="title">CSS Carousel</span></span></span>
+							<span class="carousel-image" style="--carousel-background:url('img/beach-painting.jpg');filter:invert(100);"></span>
+						</span>
+
+						<input name="carousel-0" id="carousel-0-2" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-0-2" style="--label-count:2"><span class="carousel-selector-bubble">2</span></label>
+							<label class="go-side left" for="carousel-0-1"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-0-3"><span class="symbol right"></span></label>
+							<span class="selected-container"><span class="selected-content"><span class="title"><a href="https://okabe.moe" target="_blank">Clickable Links</a></span><span class="description">Description...</span></span></span>
+							<span class="carousel-image" style="--carousel-background:url('img/clouds-painting.jpg');filter:invert(100);"></span>
+						</span>
+
+						<input name="carousel-0" id="carousel-0-3" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-0-3" style="--label-count:3"><span class="carousel-selector-bubble">3</span></label>
+							<label class="go-side left" for="carousel-0-2"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-0-4"><span class="symbol right"></span></label>
+							<span class="selected-container bottom"><span class="selected-content"><span class="title">Bottom Container</span><span class="selector-spacer"></span></span></span>
+							<span class="carousel-image" style="--carousel-background:url('img/sky-painting.jpg');filter:invert(100);"></span>
+						</span>
+
+						<input name="carousel-0" id="carousel-0-4" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-0-4" style="--label-count:4"><span class="carousel-selector-bubble">4</span></label>
+							<label class="go-side left" for="carousel-0-3"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-0-5"><span class="symbol right"></span></label>
+							<span class="carousel-image" style="--carousel-background:url('img/beach-painting.jpg');"></span>
+						</span>
+
+						<input name="carousel-0" id="carousel-0-5" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-0-5" style="--label-count:5"><span class="carousel-selector-bubble">5</span></label>
+							<label class="go-side left" for="carousel-0-4"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-0-6"><span class="symbol right"></span></label>
+							<span class="carousel-image" style="--carousel-background:url('img/clouds-painting.jpg');"></span>
+						</span>
+
+						<input name="carousel-0" id="carousel-0-6" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-0-6" style="--label-count:6"><span class="carousel-selector-bubble">6</span></label>
+							<label class="go-side left" for="carousel-0-5"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-0-1"><span class="symbol right"></span></label>
+							<span class="carousel-image" style="--carousel-background:url('img/sky-painting.jpg');"></span>
+						</span>
+						
+					</li>
+				</ul>
+
+				<span class="carousel-image"></span>
+
+			</div>
+		</div>
+
+		<div class="demo-text-container">
+			<p style="margin-top: 10px;">CSS Carousel is a simple and customizable HTML/CSS solution to a javascript-free carousel.</p>
+			<p>You can easily add additional content in the carousel such as titles, descriptions, and links to your product with full in-carousel HTML compatability.
+		</div>
+
+	</div>
+
+	<hr/>
+
+	<div class="carousel-demo-container">
+		<div class="carousel-container" style="--carousel-width: 200px;--carousel-height: 200px;--carousel-amount:3;">
+			<div class="carousel">
+				
+				<ul>
+					<li>
+						<input name="carousel-1" id="carousel-1-1" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-1-1" style="--label-count:1"><span class="carousel-selector-bubble">1</span></label>
+							<label class="go-side left" for="carousel-1-3"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-1-2"><span class="symbol right"></span></label>
+							<span class="carousel-image" style="--carousel-background:url('img/beach-painting.jpg');"></span>
+						</span>
+
+						<input name="carousel-1" id="carousel-1-2" type="radio" checked/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-1-2" style="--label-count:2"><span class="carousel-selector-bubble">2</span></label>
+							<label class="go-side left" for="carousel-1-1"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-1-3"><span class="symbol right"></span></label>
+							<span class="carousel-image" style="--carousel-background:url('img/clouds-painting.jpg');"></span>
+						</span>
+
+						<input name="carousel-1" id="carousel-1-3" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector" for="carousel-1-3" style="--label-count:3"><span class="carousel-selector-bubble">3</span></label>
+							<label class="go-side left" for="carousel-1-2"><span class="symbol left"></span></label>
+							<label class="go-side right" for="carousel-1-1"><span class="symbol right"></span></label>
+							<span class="carousel-image" style="--carousel-background:url('img/sky-painting.jpg');"></span>
+						</span>					
+					</li>
+				</ul>
+
+				<span class="carousel-image"></span>
+
+			</div>
+		</div>
+
+		<div class="carousel-container" style="--carousel-width: 200px;--carousel-height: 200px;--carousel-amount:3;">
+			<div class="carousel">
+				
+				<ul>
+					<li>
+						<input name="carousel-2" id="carousel-2-1" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector top" for="carousel-2-1" style="--label-count:1"><span class="carousel-selector-bubble">1</span></label>
+							<label class="go-side left" for="carousel-2-3"></label>
+							<label class="go-side right" for="carousel-2-2"></label>
+							<span class="carousel-image" style="--carousel-background:url('img/beach-painting.jpg');"></span>
+						</span>
+
+						<input name="carousel-2" id="carousel-2-2" type="radio"/>
+						<span class="selected">
+							<label class="carousel-selector top" for="carousel-2-2" style="--label-count:2"><span class="carousel-selector-bubble">2</span></label>
+							<label class="go-side left" for="carousel-2-1"></label>
+							<label class="go-side right" for="carousel-2-3"></label>
+							<span class="carousel-image" style="--carousel-background:url('img/clouds-painting.jpg');"></span>
+						</span>
+
+						<input name="carousel-2" id="carousel-2-3" type="radio" checked/>
+						<span class="selected">
+							<label class="carousel-selector top" for="carousel-2-3" style="--label-count:3"><span class="carousel-selector-bubble">3</span></label>
+							<label class="go-side left" for="carousel-2-2"></label>
+							<label class="go-side right" for="carousel-2-1"></label>
+							<span class="carousel-image" style="--carousel-background:url('img/sky-painting.jpg');"></span>
+						</span>					
+					</li>
+				</ul>
+
+				<span class="carousel-image"></span>
+
+			</div>
+		</div>
+
+		<div class="demo-text-container">
+			<p style="margin-top: 10px;">To change the location of the selector bubbles set <code>top</code> class to the carousel-selector element.</p> 
+			<p>To enable or disable the buttons signalling that you can click on the sides you can choose whether or not you want to generate the spans.</p>
+		</div>
+
+	</div>
+
+	<p>To change the location of the selected container for titles and descriptions, simply add the <code>bottom</code> class to the container and a <code>&lt;span class="selector-spacer"&gt;&lt;/span&gt;</code> element at the start/end of the selected-container if your selector bubbles are also at the same side as your titles.</p>
+
+	<p>When dynamically generating pages with multiple css carousels it is important to keep the input/label names and id's unique for each carousel so they do not collide and share inputs or break. It is also important that you remember to set the correct amount and carefully label the selector bubbles so their position can be calculated.</p>
+
+</div>
+
+</body>
+</html>
+
