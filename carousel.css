@@ -21,14 +21,14 @@
 	--carousel-image-border-radius-offset: 2px;
 	--carousel-background: url('img/beach-painting.jpg'); /* demo picture */
 	--carousel-background-size: cover;
-	--carousel-animation: opacity ease-in-out 1s 0s;
+	--carousel-animation: opacity ease-out 0.5s 0s;
 	--carousel-z-index-image-default: 0;
 	--carousel-z-index-image-unselected: -1;
 	--carousel-z-index-image-selected: 1;
 	--carousel-z-index-list: 1;
 	--carousel-z-index-selector: 2;
-	--carousel-selector-background-selected: linear-gradient(180deg, #515050 0%, #756E6E 100%);
-	--carousel-selector-background-unselected: linear-gradient(180deg, #FFF 0%, #AAA 100%);
+	--carousel-selector-background-selected: linear-gradient(180deg, #FFF 0%, #AAA 100%);
+	--carousel-selector-background-unselected: linear-gradient(180deg, #515050 0%, #756E6E 100%);
 	--carousel-selector-background-hover: linear-gradient(180deg, #AAA 0%, #888 100%);
 	--carousel-selector-shadow-selected: 0px 0px 4px 0px #000;
 	--carousel-selector-shadow-unselected: 0px 0px 4px 0px #000;
@@ -39,8 +39,8 @@
 	--carousel-go-side-size: 50px;
 	--carousel-go-side-margin: 5px;
 	--carousel-go-side-color: #EEE;
-	--carousel-go-side-color-hover: #AAA;
-	--carousel-text-shadow: 0 0 2px #FFF, 0 0 2px #000, 0 0 2px #000, 0 0 2px #000, 0 0 2px #4F4F4F, 0 0 2px #535353, 0 0 2px #404040
+	--carousel-go-side-color-hover: #EEE;
+	--carousel-text-shadow: 0 0 2px #FFF, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #4F4F4F, 0 0 3px #535353, 0 0 3px #404040;
 }
 
 div.carousel-container {
@@ -68,6 +68,7 @@ div.carousel {
 	border-radius: var(--carousel-border-radius);
 	border: none;
 	box-shadow: var(--carousel-box-shadow);
+	overflow: hidden;
 }
 
 div.carousel ul, div.carousel li {
@@ -147,12 +148,12 @@ div.carousel ul span.carousel-image {
 	position: absolute;
 	top: 0;
 	z-index: var(--carousel-z-index-image-unselected);
-	/*transition: var(--carousel-animation);*/
+	transition: var(--carousel-animation);
 }
 
 div.carousel input[type="radio"]:checked + span.selected span.carousel-image {
 	opacity: 1;
-	/*transition: var(--carousel-animation);*/
+	transition: var(--carousel-animation);
 }
 
 label.go-side {
@@ -190,6 +191,7 @@ label.go-side span.symbol::after {
 	line-height: var(--carousel-go-side-size);
 	letter-spacing: 2px;
 	font-family: Verdana;
+	opacity: 0.8;
 }
 
 label.go-side.left span.symbol.left::after {
@@ -206,6 +208,7 @@ label.go-side.right span.symbol.right::after {
 
 label.go-side:hover > span.symbol::after {
 	color: var(--carousel-go-side-color-hover);
+	opacity: 1.0;
 }
 
 div.carousel input:checked + span.selected label.go-side {
@@ -213,7 +216,6 @@ div.carousel input:checked + span.selected label.go-side {
 }
 
 div.carousel span.selected-container {
-	display: none;
 	overflow: hidden;
 	width: 100%;
 	margin: auto;
@@ -223,8 +225,9 @@ div.carousel span.selected-container {
 	position: absolute;
 	border-radius: var(--carousel-selected-container-border-radius-top);
 	/* padding-top: calc( var(--carousel-selector-size) * 1.5 ); Keeping this off for better bubble location customizability */
-	/*opacity: 0;
-	transition: var(--carousel-animation);*/
+	opacity: 0;
+	transition: var(--carousel-animation);
+	pointer-events: none;
 }
 
 div.carousel span.selected-container.bottom {
@@ -242,8 +245,9 @@ div.carousel span.selected-container span.selector-spacer {
 
 div.carousel input:checked + span.selected span.selected-container {
 	display: block;
-	/*opacity: 1;
-	transition: var(--carousel-animation);*/
+	opacity: 1;
+	transition: var(--carousel-animation);
+	pointer-events: unset;
 }
 
 div.carousel span.selected-content {
